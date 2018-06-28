@@ -1,0 +1,31 @@
+﻿<Project>
+  <!-- The lengthy property- and target names are just to reduce the risk of conflicts with your custom targets -->
+ 
+  <Target Name="ParcelAspNetCoreRunParcel" BeforeTargets="PrepareForPublish" Condition="$(TargetFramework.Contains('netcoreapp'))">
+    <PropertyGroup>
+      <GeneratedItemPatterns>$(ParcelAspNetCoreOutDir)/*</GeneratedItemPatterns>
+      <DefaultItemExcludes>$(DefaultItemExcludes);$(GeneratedItemPatterns);</DefaultItemExcludes>
+    </PropertyGroup>
+    
+    <ItemGroup>
+      <_GeneratedFiles Include="$(GeneratedItemPatterns)" />
+      <ContentWithTargetPath Include="@(_GeneratedFiles->'%(FullPath)')" RelativePath="%(_GeneratedFiles.Identity)" TargetPath="%(_GeneratedFiles.Identity)" CopyToPublishDirectory="PreserveNewest" />
+    </ItemGroup>
+  </Target>
+
+
+  <Target Name="ParcelAspNetCoreRunParcelBuild" BeforeTargets="Build" DependsOnTargets="RunParcel" Condition="'$(Configuration)' == 'Release' ">
+    <!-- Install all defined npm packages -->
+    <Exec Command="npm install" />
+
+    <!-- As part of publishing, ensure that resources are freshly built in production mode -->
+    <Exec Command="parcel build $(ParcelAspNetCoreEntryPoint) --out-dir $(ParcelAspNetCoreOutDir)" />
+  </Target>
+
+
+  <Target Name="ParcelAspNetCoreInstallParcelFromNpm" BeforeTargets="Build" Condition="!Exists('node_modules/parcel-bundler')">
+    <!-- Install Parcel -->
+    <Exec Command="npm init -y" />
+    <Exec Command="npm install parcel-bundler --save-dev" />
+  </Target>
+</Project>

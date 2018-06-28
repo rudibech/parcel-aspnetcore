@@ -1,0 +1,13 @@
+﻿<Project>
+  <!-- The lengthy property- and target names are just to reduce the risk of conflicts with your custom targets -->
+  
+  <PropertyGroup>
+    <ParcelAspNetCoreEntryPoint Condition="'$(ParcelAspNetCoreEntryPoint)' == '' ">index.html</ParcelAspNetCoreEntryPoint>
+    <ParcelAspNetCoreOutDir Condition="'$(ParcelAspNetCoreOutDir)' == '' ">wwwroot</ParcelAspNetCoreOutDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="$(ParcelAspNetCoreOutDir)/debug/**" />
+    <Folder Include="$(ParcelAspNetCoreOutDir)/" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>RudiBech.AspNetCore.SpaServices.Parcel</RootNamespace>
+    <AssemblyName>RudiBech.AspNetCore.SpaServices.Parcel</AssemblyName>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>RudiBech.Parcel.AspNetCore</PackageId>
+    <Version>0.2.0</Version>
+    <Authors>Rudi Bech</Authors>
+    <Product>RudiBech.AspNetCore.SpaServices.Parcel</Product>
+    <Description>AspNet Core middelware for Parcel allowing you to start Parcel when running your AspNet Core application.</Description>
+    <PackageLicenseUrl>LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/rudibech/parcel-aspnetcore</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/rudibech/parcel-aspnetcore</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="build\RudiBech.Parcel.AspNetCore.props" />
+    <None Remove="parcel-dev-middleware.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="parcel-dev-middleware.js" />
+
+    <Content Include="build\**\*">
+      <Pack>true</Pack>
+      <PackagePath>build\</PackagePath>
+    </Content>
+    <Content Remove="package-lock.json" />
+    <Content Remove="package.json" />
+    <Content Remove="Properties\launchSettings.json" />
+
+    <Content Include="README.md">
+      <Pack>true</Pack>
+      <PackagePath>README.md</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.NodeServices" Version="2.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+</Project>
