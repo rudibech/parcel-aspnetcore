@@ -7,7 +7,7 @@ The defaults in this package assumes that you have an `index.html` in the root o
 
 ## Requirements
 * [Node.js](https://nodejs.org/en/)
-  * To test this is installed and can be found, run node -v on a command line
+  * To test if this is installed and can be found, run `node -v` on a command line
   * Note: If you're deploying to an Azure web site, you don't need to do anything here - Node is already installed and available in the server environments
 * [.NET Core](https://dot.net/) 2.1 or later
 
