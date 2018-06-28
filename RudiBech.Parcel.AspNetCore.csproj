@@ -6,13 +6,18 @@
     <AssemblyName>RudiBech.AspNetCore.SpaServices.Parcel</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>RudiBech.Parcel.AspNetCore</PackageId>
-    <Version>0.2.0</Version>
+    <Version>0.2.1</Version>
     <Authors>Rudi Bech</Authors>
     <Product>RudiBech.AspNetCore.SpaServices.Parcel</Product>
-    <Description>AspNet Core middelware for Parcel allowing you to start Parcel when running your AspNet Core application.</Description>
-    <PackageLicenseUrl>LICENSE.txt</PackageLicenseUrl>
+    <Description>AspNet Core middelware allowing you to start Parcel when running your AspNet Core application</Description>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/rudibech/parcel-aspnetcore/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/rudibech/parcel-aspnetcore</PackageProjectUrl>
     <RepositoryUrl>https://github.com/rudibech/parcel-aspnetcore</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Title>AspNetCore + Parcel = middelware to run Parcel</Title>
+    <Copyright>Copyright (c) 2018 Rudi Bech</Copyright>
+    <PackageTags>netcore;parcel</PackageTags>
+    <MinClientVersion>4.6.2</MinClientVersion>
   </PropertyGroup>
 
   <ItemGroup>
