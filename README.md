@@ -7,6 +7,8 @@ This package will ensure that Parcel runs when you start your AspNetCore applica
 
 The defaults in this package assumes that you have an `index.html` in the root of your application (same level as .csproj), and that you want the generated output to be placed in `wwwroot`. The debug files will be placed in `wwwroot/debug` and served by parcel through the middelware. When building for release it will put the files in `wwwroot`.
 
+**Warning:** This middelware is not magic, and currently it does not handle issues where Parcel itself freezes. Please try running Parcel from command line if something seems broken as it is easy to miss errors logged to the console alongside other output from Kestrel. I welcome input or pull requests for making this more robust.
+
 ## Requirements
 
 * [Node.js](https://nodejs.org/en/)
@@ -117,3 +119,18 @@ export default {
 }
 </script>
 ```
+
+If you combine this with [Material Design Components](https://material.io/design/components/) and e.g. [vue-mdc-adapter](https://github.com/stasson/vue-mdc-adapter) and try to use .scss imports like `@import '~vue-mdc-adapter/dist/styles'` then you will most likely run into issues with nested packages. A workaround for this is to add a file `.sassrc.js` with the following content:
+
+```js
+const path = require('path')
+const CWD = process.cwd()
+
+module.exports = {
+	"includePaths": [
+        path.resolve(CWD, 'node_modules/'),
+	]
+}
+```
+
+This causes performance issues, so please consider other alternatives if possible.
