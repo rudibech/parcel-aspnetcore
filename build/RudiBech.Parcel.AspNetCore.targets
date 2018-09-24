@@ -14,7 +14,7 @@
   </Target>
 
 
-  <Target Name="ParcelAspNetCoreRunParcelBuild" BeforeTargets="Build" DependsOnTargets="RunParcel" Condition="'$(Configuration)' == 'Release' ">
+  <Target Name="ParcelAspNetCoreRunParcelBuild" BeforeTargets="Build" DependsOnTargets="ParcelAspNetCoreRunParcel" Condition="'$(Configuration)' == 'Release' ">
     <!-- Install all defined npm packages -->
     <Exec Command="npm install" />
 
